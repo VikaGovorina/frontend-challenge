@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { CatApi } from "../../api/CatApi";
 import type { Cat } from "../../types/cat";
 import styles from "./HomePage.module.css"
+import { CatPin } from "../../components/CatPin/CatPin";
 
 export default function HomePage() {
     const [loading, setLoading] = useState(false);
@@ -30,10 +31,11 @@ export default function HomePage() {
     
     return (
         <div>
-            <h1>Home</h1>
-
+            
             <div className={styles.catsContainer}>
-
+                {cats.map(cat => (
+                    <CatPin key={cat.id} cat={cat}/>
+                ))}
             </div>
 
         </div>
