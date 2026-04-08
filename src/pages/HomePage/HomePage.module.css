@@ -5,3 +5,11 @@
     gap: 52px 48px;
     margin: 48px 62px;
 }
+
+.loadingText {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    /* align-items: center; */
+    height: 100px;
+}
