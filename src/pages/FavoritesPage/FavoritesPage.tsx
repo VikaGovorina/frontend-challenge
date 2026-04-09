@@ -5,9 +5,6 @@ import { catStore } from "../../store/catstore";
 function FavoritesPage() {
     return (
         <Cats cats={catStore.favorites} />
-        // <div>
-            
-        // </div>
     )
 }
 

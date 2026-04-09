@@ -13,8 +13,6 @@ export default function MainLayout() {
                             <NavLink to="/favorites">Любимые котики</NavLink>
                         </li>
                     </ul>
-                    
-                    
                 </nav>
             </header>
 

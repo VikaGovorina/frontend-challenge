@@ -34,7 +34,7 @@ function HomePage() {
                 observer.unobserve(observerElement.current);
             }
         }
-    })
+    }, []);
     
     return (
         <div>
@@ -45,7 +45,7 @@ function HomePage() {
                     ? "... загружаем котиков ..."
                     : "... загружаем еще котиков ..."}
             </p>}
-            <div ref={observerElement} style={{height: '100px'}}></div>
+            <div ref={observerElement} style={{height: '48px'}}></div>
             
         </div>
     )
