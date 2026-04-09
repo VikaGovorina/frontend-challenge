@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react"
 import styles from "./HomePage.module.css"
-import { CatPin } from "../../components/CatPin/CatPin";
 import { catStore } from "../../store/catstore";
 import { observer } from "mobx-react-lite";
+import Cats from "../../components/Cats/Cats";
 
 function HomePage() {
     const observerElement = useRef<HTMLDivElement>(null);
@@ -38,13 +38,13 @@ function HomePage() {
     
     return (
         <div>
-            <div className={styles.catsContainer}>
-                {catStore.cats.map(cat => (
-                    <CatPin key={cat.id} cat={cat}/>
-                ))}
-            </div>
+            <Cats cats={catStore.cats}/>
             
-            {catStore.loading && <p className={styles.loadingText}>... загружаем еще котиков ...</p>}
+            {catStore.loading && <p className={styles.loadingText}>
+                {catStore.cats.length === 0
+                    ? "... загружаем котиков ..."
+                    : "... загружаем еще котиков ..."}
+            </p>}
             <div ref={observerElement} style={{height: '100px'}}></div>
             
         </div>

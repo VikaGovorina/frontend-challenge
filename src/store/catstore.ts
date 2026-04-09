@@ -10,6 +10,7 @@ class CatStore {
 
     constructor() {
         makeAutoObservable(this);
+        this.loadFavorites();
     }
 
     async loadCats() {
@@ -18,10 +19,6 @@ class CatStore {
             this.loading = true;
             const data = await CatApi.getCats(this.page);
             this.setCats(data);
-
-            // console.log(data);
-            // console.log(this.cats);
-
         } catch (error) {
             console.error(error);
         } finally {
@@ -38,6 +35,30 @@ class CatStore {
         this.page++;
     }
 
+    toggleFavorites(cat: Cat) {
+        if (this.favorites.find(fav => fav.id === cat.id)) {
+            this.favorites = this.favorites.filter(fav => fav.id !== cat.id);
+        } else {
+            this.favorites = [...this.favorites, cat];
+        }
+
+        this.saveFavorites();
+    }
+
+    isFavorite(cat: Cat) {
+        return this.favorites.find(fav => fav.id === cat.id);
+    }
+
+    saveFavorites() {
+        localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    }
+
+    loadFavorites() {
+        const favs = localStorage.getItem('favorites');
+        if (favs) {
+            this.favorites = JSON.parse(favs);
+        }
+    }
 }
 
 export const catStore = new CatStore();

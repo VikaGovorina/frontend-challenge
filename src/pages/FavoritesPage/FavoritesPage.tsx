@@ -1,8 +1,14 @@
+import { observer } from "mobx-react-lite";
+import Cats from "../../components/Cats/Cats";
+import { catStore } from "../../store/catstore";
 
-export default function FavoritesPage() {
+function FavoritesPage() {
     return (
-        <div>
-            <h1>Favorites</h1>
-        </div>
+        <Cats cats={catStore.favorites} />
+        // <div>
+            
+        // </div>
     )
 }
+
+export default observer(FavoritesPage);
