@@ -1,6 +1,7 @@
 # Cat Pinterest
 
 [Live Preview](https://vikagovorina.github.io/frontend-challenge/)
+> для корректного отображения включите vpn
 
 ## Описание
 
