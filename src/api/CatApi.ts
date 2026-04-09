@@ -15,7 +15,7 @@ export const CatApi = {
             const { data } = await api.request({
                 method: 'GET',
                 params: {
-                    limit: 15,
+                    limit: 20,
                     page
                 }
             });

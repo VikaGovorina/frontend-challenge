@@ -12,9 +12,16 @@ class CatStore {
         makeAutoObservable(this);
         this.loadFavorites();
     }
+    
+    async loadUntilTheEnd() {
+        while (document.documentElement.scrollHeight <= window.innerHeight && !this.loading) {
+            await this.loadCats();
+        }
+    }
 
     async loadCats() {
         if (this.loading) return;
+
         try {
             this.loading = true;
             const data = await CatApi.getCats(this.page);

@@ -10,7 +10,7 @@ function HomePage() {
     useEffect(() => {
         if (catStore.cats.length > 0) return;
 
-        catStore.loadCats();
+        catStore.loadUntilTheEnd();
     }, []);
 
     useEffect(() => {
@@ -38,13 +38,18 @@ function HomePage() {
     
     return (
         <div>
+            {catStore.loading
+                && catStore.cats.length === 0
+                && <p style={{marginTop: "48px"}} className={styles.loadingText}>... загружаем котиков ...</p>
+            }
+
             <Cats cats={catStore.cats}/>
             
-            {catStore.loading && <p className={styles.loadingText}>
-                {catStore.cats.length === 0
-                    ? "... загружаем котиков ..."
-                    : "... загружаем еще котиков ..."}
-            </p>}
+            {catStore.loading
+                && catStore.cats.length > 0
+                && <p className={styles.loadingText}>... загружаем еще котиков ...</p>
+            } 
+
             <div ref={observerElement} style={{height: '48px'}}></div>
             
         </div>
